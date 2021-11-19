@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-import { data, sliderSettings } from '../../data/CarouselData';
+import { sliderSettings } from '../../data/CarouselData';
+  
+  
 import { Row, Heading, Section, TextWrapper } from '../../globalStyles';
 import {
 	ButtonContainer,
@@ -10,10 +12,29 @@ import {
 	CarouselImage,
 	CardButton,
 } from './CarouselStyles';
-
+import { getallproduct } from '../../JS/actions/annonceActions';
+import { useDispatch, useSelector } from 'react-redux';
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+     toast.configure();
 const Carousel = () => {
+	const dispatch = useDispatch();
 	const [sliderRef, setSliderRef] = useState(null);
+	const allProduct = useSelector((state) => state.annonceReducer.product);
+useEffect(() => {
+dispatch(getallproduct())
+}, [])
 
+  const notify = () => toast.error('🦄 Wow so easy!', {
+position: "top-right",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+
+});
 	return (
 		<Section margin="auto" maxWidth="1280px" padding="50px 70px" inverse>
 			<Row justify="space-between" margin="1rem" wrap="wrap">
@@ -27,21 +48,36 @@ const Carousel = () => {
 					</IconContext.Provider>
 				</ButtonContainer>
 			</Row>
+{allProduct ? <ReviewSlider {...sliderSettings} ref={setSliderRef}>
 
-			<ReviewSlider {...sliderSettings} ref={setSliderRef}>
-				{data.map((el, index) => (
+				{allProduct.map((el, index) => (
 					<ImageWrapper key={index}>
-						<CarouselImage src={el.image} />
+						<CarouselImage src={el.pic} />
 						<TextWrapper size="1.1rem" margin="0.4rem 0 0" weight="bold">
-							{el.title}
+							{el.name}
 						</TextWrapper>
 						<TextWrapper size="0.9rem" margin="0.7rem" color="#4f4f4f">
-							{el.description}
+							{el.message}
 						</TextWrapper>
-						<CardButton>Learn More</CardButton>
+						
+						<CardButton onClick={() => notify()}>Learn More</CardButton>
+<ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>
+{/* Same as */}
+<ToastContainer />
 					</ImageWrapper>
 				))}
-			</ReviewSlider>
+			</ReviewSlider> :  <h1>Hello</h1> }
+			
 		</Section>
 	);
 };

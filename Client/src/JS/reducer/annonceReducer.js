@@ -17,7 +17,7 @@ export default (state = initialState, { type, payload }) => {
                case GET_ALL_PRODUCT_SUCCESS:
                 return {
                     ...state,
-                    product: payload.products,
+                    product: payload,
                    
                   };
     case AJOUT_FAIL:

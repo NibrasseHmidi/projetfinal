@@ -12,5 +12,5 @@ const { ajoutProduct, upload,getProductById,GetAllProduct} = require("../control
 productrouter.post("/add", upload.single('pic'),isAuth(), ajoutProduct);
 // productrouter.get("/myproduct/:id",isAuth(),getProductById)
 productrouter.get("/myproduct",isAuth(),getProductById)
-productrouter.get("/allproduct",isAuth(),GetAllProduct)
+productrouter.get("/allproduct",GetAllProduct)
 module.exports = productrouter;

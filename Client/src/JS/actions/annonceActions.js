@@ -58,13 +58,13 @@ console.log(data)
 
 
       export const getallproduct = () => async(dispatch) =>{
-        const config = {
+      const config = {
             headers: {
-                Authorization: localStorage.getItem("token"),
                 "Content-type": "application/json",
             },
         }
         try {
+            
             const {data} = await axios.get("/product/allproduct", config)
          console.log(data)
            

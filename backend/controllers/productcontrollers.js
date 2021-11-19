@@ -8,7 +8,7 @@ const {v4 : uuiv4} = require('uuid')
 
 const storage = multer.diskStorage({
   destination:function(req, file, cb){
-    cb(null, '../Client/public/uploads')
+    cb(null, '.././Client/public/uploads')
   },
   filename : function(req, file, cb){
     cb(null, uuiv4() ,'-',Date.now()+ path.extname(file.originalname))
@@ -80,14 +80,9 @@ const getProductById = async (req, res) => {
 
 //get all product
 
-const GetAllProduct=(req,res)=> {
-productmodel.find()
-.populate("user","_id name lastname")
-.then(products => {
-    res.send({products})
-})
-.catch(err=>{
-    console.log(err)
-})
+const GetAllProduct= async (req,res)=> {
+const allProduct = await productmodel.find();
+       res.status(200).json(allProduct)
+
 }
 module.exports = {upload,ajoutProduct,getProductById ,GetAllProduct}

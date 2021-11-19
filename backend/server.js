@@ -9,7 +9,7 @@ const connectDb = require("./config/connectDb");
 const cors = require('cors');
 const path = require('path');
 
-app.use(express.static(path.join(__dirname,'../../Client/public/uploads')))
+app.use(express.static(path.join(__dirname,'../Client/public/uploads')))
 app.use(morgan('dev'))
 app.use(bodyParser.json());
 app.use(

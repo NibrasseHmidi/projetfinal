@@ -22,7 +22,7 @@ import { Container } from "../../globalStyles";
 import validateForm from "./validateAdd";
 import { addSvg } from "../../data/FormData";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Add = () => {
    const history = useHistory();
@@ -106,6 +106,7 @@ const handleSubmit = (e) =>{
     formData.append('message',message)
     formData.append('pic',pic) 
     dispatch(addproduct(formData,history))
+    history.push("/profil")
 
   
 }
@@ -189,6 +190,7 @@ const handleSubmit = (e) =>{
               />
 
               <FormButton type="submit" >Ajouter</FormButton>
+           
             </FormWrapper>
           
           </FormColumn>

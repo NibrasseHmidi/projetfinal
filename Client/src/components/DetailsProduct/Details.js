@@ -17,6 +17,10 @@ const Details = () => {
         <IconContext.Provider value={{ color: "#a9b3c1", size: "1rem" }}>
       <PricingSection id="pricing">
      <PricingWrapper>
+
+
+
+
      <div className = "card-wrapper">
   <div className = "card">
       <div className = "product-imgs">
@@ -106,6 +110,8 @@ const Details = () => {
     </div>
     </div>
     </div>
+
+    
         </PricingWrapper>
       </PricingSection>
     </IconContext.Provider>
