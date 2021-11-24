@@ -1,4 +1,4 @@
-import { AJOUT_ANNONCE_SUCCESS, AJOUT_FAIL, GET_ALL_PRODUCT_SUCCESS, GET_PRODUCT_SUCCESS } from "../const/productconst";
+import { AJOUT_ANNONCE_SUCCESS, AJOUT_FAIL, GET_ALL_PRODUCT_SUCCESS, GET_PRODUCT_SUCCESS, PRODUCT_DETAIL_FAIL, PRODUCT_DETAIL_SUCCESS} from "../const/productconst";
 
 const initialState = {
   product: null,
@@ -20,6 +20,14 @@ export default (state = initialState, { type, payload }) => {
                     product: payload,
                    
                   };
+                   case PRODUCT_DETAIL_SUCCESS:
+                return {
+                    ...state,
+                    product: payload,
+                   
+                  };
+                    case PRODUCT_DETAIL_FAIL:
+      return { ...state, product: null };
     case AJOUT_FAIL:
       return { ...state, product: null };
     default:

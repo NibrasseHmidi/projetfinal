@@ -21,6 +21,8 @@ import {
   StyledUl,
   ImgNav,
   Stylednav,
+  Select,
+  Option,
 } from './NavbarStyles.js';
 import { useLocation, useHistory } from 'react-router-dom';
 import { data } from '../../data/NavbarData';
@@ -80,9 +82,37 @@ const isAuth = useSelector((state) => state.authReducer.isAuth);
 					<MobileIcon onClick={handleClick}>
 						{show ? <FaTimes /> : <CgMenuRight />}
 					</MobileIcon>
-
+    <Select  name="ville">
+                   <Option >Ville</Option>
+                  <Option>Ariana</Option>
+                  <Option>Béja</Option>
+                    <Option>Ben Arous</Option>
+                      <Option>Bizerte</Option>
+                        <Option>Gabes</Option>
+                          <Option>Gafsa</Option>
+                            <Option>Jendouba</Option>
+                              <Option>Kairouan</Option>
+                                <Option>Kasserine</Option>
+                                  <Option>Kebili</Option>
+                                    <Option>La Manouba</Option>
+                                      <Option>Le Kef</Option>
+                                        <Option>Mahdia</Option>
+                                          <Option>Médenine</Option>
+                                            <Option>Monastir</Option>
+                                              <Option>Nabeul</Option>
+                                                <Option>Sfax</Option>
+                                                  <Option>Sidi Bouzid</Option>
+                                                    <Option>Siliana</Option>
+                                                      <Option>Sousse</Option>
+                                                        <Option>Tataouine</Option>
+                                                          <Option>Tozeur</Option>
+                                                            <Option>Tunis</Option>
+                                                              <Option>Zaghouan</Option>
+                </Select>
 						<Input type="text" placeholder="Produit à chercher" />
-						<ButtonSearch> <BsSearch/></ButtonSearch>
+						<ButtonSearch> <BsSearch style={{marginTop:-10}}/></ButtonSearch>
+
+
 						{isAuth ?  <StyledUl show={show}>
 						<ImgNav
               src={userLogin.pic}
@@ -101,7 +131,7 @@ const isAuth = useSelector((state) => state.authReducer.isAuth);
                         <SubA onClick={() => { dispatch(getAuthUser()); history.push("/profil") }}>
                             My Profile 
                         </SubA>
-                        <SubA onClick={() => { dispatch(logout()); history.push("/login") }} >
+                        <SubA onClick={() => { dispatch(logout()); history.push("/") }} >
                             Logout
                         </SubA>
                       

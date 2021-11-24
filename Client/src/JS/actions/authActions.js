@@ -49,7 +49,7 @@ export const login = ({email, password},history) => async (dispatch) => {
       type: LOGIN_USER_SUCCESS,
       payload: data, // email password
     });
-     history.push("/profil")
+     history.push("/")
   } catch (error) {
   
 
@@ -91,7 +91,7 @@ try {
       type: REGISTER_USER_SUCCESS ,
       payload: data, // name , pic ,email, password
     });
-   history.push("/profil")
+   history.push("/")
 } catch (error) {
   error.response.data.forEach((elt) => {
       toast.error(elt.msg);

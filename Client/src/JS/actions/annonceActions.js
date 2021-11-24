@@ -3,6 +3,9 @@ import {
   AJOUT_FAIL,
   GET_ALL_PRODUCT_SUCCESS,
   GET_PRODUCT_SUCCESS,
+  PRODUCT_DETAIL_SUCCESS,
+  PRODUCT_DETAIL_FAIL,
+
  
 } from "../const/productconst";
 
@@ -78,4 +81,34 @@ console.log(data)
         type: AJOUT_FAIL,
       });
     }
+    }
+
+
+
+
+export const detailsProduct =(id)=> async (dispatch) => {
+const config = {
+        headers: {
+           Authorization:localStorage.getItem("token"),
+          "Content-type": "application/json",
+        }
+      };
+try {
+  
+   const { data } = await axios.get(`/product/${id}`, config);
+console.log(data);
+     dispatch({
+        type: PRODUCT_DETAIL_SUCCESS,
+        payload: data
+      });
+console.log(data);
+}
+ catch (error) {
+     dispatch({
+        type: PRODUCT_DETAIL_FAIL,
+        
+      });
+
+    }
+
     }

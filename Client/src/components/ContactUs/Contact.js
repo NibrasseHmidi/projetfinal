@@ -6,8 +6,6 @@ import { Button, ContactTitle, ContainerWrapper, Form, ImgSvg, Input, Inputs, La
 const Contact = () => {
 function sendEmail(e){
   e.preventDefault();
-
-
   emailjs.sendForm('service_obs3aok',
   'template_2505dtv',
   e.target,

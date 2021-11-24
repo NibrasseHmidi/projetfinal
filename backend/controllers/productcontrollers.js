@@ -27,7 +27,7 @@ const fileFilter = (req,file,cb) => {
 const upload= multer({ storage, fileFilter})
 
 
-
+//addProduct
 const ajoutProduct = (req, res) => {
  const {name,
   numero,
@@ -66,7 +66,7 @@ product.save().then(result=> {
 }
 
 
-
+//get all product of one user 
 const getProductById = async (req, res) => {
  productmodel.find({user:req.user._id})
     .populate("user","_id name")
@@ -85,4 +85,33 @@ const allProduct = await productmodel.find();
        res.status(200).json(allProduct)
 
 }
-module.exports = {upload,ajoutProduct,getProductById ,GetAllProduct}
+
+//get details of one product
+const GetDetailsProduct = async (req,res)=> {
+const details = await productmodel.findById(req.params.id);
+  if (details) {
+   return res.json(details);
+  } else {
+   return res.status(404).json({ message: "details not found" });
+  }
+}
+
+
+
+
+
+// const GetDetailsProduct = async (req,res )=> {
+//  try {
+//       const details = await productmodel.findById(req.params.id);
+//       res.status(200);
+//       res.send(details);
+//     } catch (error) {
+//       res.status(500);
+//       throw new Error('No product found');
+//     }
+
+// }
+
+
+
+module.exports = {upload,ajoutProduct,getProductById ,GetAllProduct,GetDetailsProduct}

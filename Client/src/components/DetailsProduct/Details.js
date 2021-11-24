@@ -6,7 +6,22 @@ import {
 } from './DetailsStyles';
 
 import ReactStars from "react-rating-stars-component";
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { detailsProduct } from '../../JS/actions/annonceActions';
 const Details = () => {
+  const { id } = useParams();
+
+console.log(typeof(id));
+
+ const ProductDetail = useSelector((state) => state.annonceReducer.product);
+
+
+
+ 
+
+
   const ratingChanged = (newRating) => {
   console.log(newRating);
 };

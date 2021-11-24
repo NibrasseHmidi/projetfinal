@@ -8,7 +8,6 @@ import {
   FormLabel,
   FormInputRow,
   Textarea,
-  FormMessage,
   FormButton,
   FormTitle,
   ImgSvg,
@@ -17,12 +16,12 @@ import {
   SelectItem,
   InputFile,
 } from "./AddStyles";
-import { addproduct, getProduct } from "../../JS/actions/annonceActions";
+import { addproduct} from "../../JS/actions/annonceActions";
 import { Container } from "../../globalStyles";
-import validateForm from "./validateAdd";
+
 import { addSvg } from "../../data/FormData";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {  useHistory } from "react-router-dom";
 
 const Add = () => {
    const history = useHistory();

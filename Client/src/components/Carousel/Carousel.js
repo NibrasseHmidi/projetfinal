@@ -12,12 +12,15 @@ import {
 	CarouselImage,
 	CardButton,
 } from './CarouselStyles';
-import { getallproduct } from '../../JS/actions/annonceActions';
+import { detailsProduct, getallproduct } from '../../JS/actions/annonceActions';
 import { useDispatch, useSelector } from 'react-redux';
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import { useHistory, useParams } from 'react-router-dom';
      toast.configure();
 const Carousel = () => {
+	 const { id } = useParams();
+	 console.log(id);
 	const dispatch = useDispatch();
 	const [sliderRef, setSliderRef] = useState(null);
 	const allProduct = useSelector((state) => state.annonceReducer.product);
@@ -25,16 +28,16 @@ useEffect(() => {
 dispatch(getallproduct())
 }, [])
 
-  const notify = () => toast.error('🦄 Wow so easy!', {
-position: "top-right",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
 
-});
+ const handelview = (id) => {
+
+dispatch(detailsProduct(id));
+history.push(`/details/${id}`)
+ } 
+
+ 
+
+let history = useHistory();
 	return (
 		<Section margin="auto" maxWidth="1280px" padding="50px 70px" inverse>
 			<Row justify="space-between" margin="1rem" wrap="wrap">
@@ -60,7 +63,7 @@ progress: undefined,
 							{el.message}
 						</TextWrapper>
 						
-						<CardButton onClick={() => notify()}>Learn More</CardButton>
+						<CardButton onClick={() => { handelview()  }}>Learn More</CardButton>
 <ToastContainer
 position="top-right"
 autoClose={5000}

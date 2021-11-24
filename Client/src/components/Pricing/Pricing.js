@@ -35,7 +35,6 @@ import { getProduct } from "../../JS/actions/annonceActions";
 
 function Pricing() {
   const dispatch = useDispatch();
-const history = useHistory()
   //get user profile
 
   const userLogin = useSelector((state) => state.authReducer.user);

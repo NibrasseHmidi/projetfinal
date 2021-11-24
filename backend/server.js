@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const bodyParser =require('body-parser')
 const authRoutes = require("./routes/authRoutes");
 const productRoute = require("./routes/productRoute");
+const conversationRoutes = require("./routes/conversationRoutes");
+const messageRoutes = require("./routes/messageRoutes");
 const connectDb = require("./config/connectDb");
 const cors = require('cors');
 const path = require('path');
@@ -26,6 +28,8 @@ connectDb();
 app.use(cors());
 app.use("/auth", authRoutes);
 app.use("/product", productRoute);
+app.use("/conversation", conversationRoutes);
+app.use("/message", messageRoutes);
 // start server
 const port = process.env.PORT || 5000;
 

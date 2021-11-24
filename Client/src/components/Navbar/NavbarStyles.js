@@ -209,21 +209,40 @@ top:20px;
 left:100px;
 height: 50px;
 	background: none;
-	white-space: nowrap;
-	padding: 10px 20px;
+	
 	font-size: 16px;
 	color: #fff;
 	outline: none;
 	border: 2px solid #fff;
 	cursor: pointer;
-	overflow: hidden;
+	
 	position: relative;
 
+`
+export const Select = styled.select`
+top:20px;
+left:100px;
+width: 100px;
+height: 50px;
+	background: none;
+	
+	
+	font-size: 16px;
+	color: #fff;
+	outline: none;
+	border: 2px solid #fff;
+	cursor: pointer;
+	position: relative;
+`
+
+export const Option = styled.option`
+color: black;
 `
 export const ButtonSearch= styled.button`
 top:20px;
 left:100px;
 height:  50px;
+
 	background: none;
 	white-space: nowrap;
 	padding: 10px 20px;
