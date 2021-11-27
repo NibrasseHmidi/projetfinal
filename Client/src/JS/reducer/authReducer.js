@@ -1,4 +1,4 @@
-import { LOGIN_USER_SUCCESS, AUTH_FAIL,REGISTER_USER_SUCCESS, SET_LOADING, LOGOUT, GET_AUTH_USER} from "../const/index";
+import { LOGIN_USER_SUCCESS, AUTH_FAIL,REGISTER_USER_SUCCESS, SET_LOADING, LOGOUT, GET_AUTH_USER,UPDATE_USER_PROFIL,UPDATE_USER_PROFIL_FAIL} from "../const/index";
 const initialState = {
   user: {},
   isLoading: false,
@@ -27,6 +27,33 @@ export default (state = initialState, { type, payload }) => {
         user: payload,
         
       };
+
+case UPDATE_USER_PROFIL:
+          localStorage.setItem("token", payload.token)
+      return {
+        ...state,
+        isLoading: false,
+        isAuth: true,
+        user: payload,
+        
+      };
+
+
+
+case UPDATE_USER_PROFIL_FAIL:
+
+  return{
+    ...state,
+    user: null,
+  token: null,
+  isLoading: false,
+  isAuth: false,
+  }
+
+
+
+
+
       case GET_AUTH_USER:
         return{
           ...state, 

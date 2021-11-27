@@ -83,7 +83,7 @@ export const FormInput = styled.input`
 	outline: none;
 	border-radius: 2px;
 	height: 40px;
-	width: 100%;
+	width: 80%;
 	border: none;
 	border-bottom: 1px solid #cfcfcf;
 	font-size: 1rem;
@@ -116,7 +116,7 @@ export const FormButton = styled.button`
 	white-space: nowrap;
 	/* color: #fff; */
 	outline: none;
-	width: 100%;
+	width: 80%;
 	font-size: 1.4rem;
 	padding: 5px 15px;
 	border: 2px solid black;

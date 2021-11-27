@@ -1,4 +1,4 @@
-import { LOGIN_USER_SUCCESS, AUTH_FAIL,REGISTER_USER_SUCCESS,LOGOUT,GET_AUTH_USER,SET_LOADING  } from "../const";
+import { LOGIN_USER_SUCCESS, AUTH_FAIL,REGISTER_USER_SUCCESS,LOGOUT,GET_AUTH_USER,SET_LOADING , UPDATE_USER_PROFIL,UPDATE_USER_PROFIL_FAIL  } from "../const";
  import axios from "axios";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -107,5 +107,39 @@ try {
 
 }
 
-//profil
+//UpDateProfil
 
+export const updateProfile = ({name,lastname,email,password,pic},history) => async dispatch => {
+ dispatch({type:SET_LOADING})
+try {
+  const config = {
+      headers: {
+         authorization: localStorage.getItem("token"),
+        "Content-type": "application/json",
+      },
+    };
+
+    let {data}= await axios.post("/auth/updateUser", { name, lastname, email, password , pic}, config
+    );
+    dispatch({
+      type: UPDATE_USER_PROFIL ,
+      payload: data, // name , pic ,email, password
+    });
+
+    
+
+   history.push("/")
+} catch (error) {
+  error.response.data.forEach((elt) => {
+      toast.error(elt.msg);
+    });
+  
+    
+    dispatch({
+      type: UPDATE_USER_PROFIL_FAIL,
+      payload:error.response.data.msg,
+    });
+}
+
+
+}

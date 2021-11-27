@@ -5,6 +5,8 @@ import {
   GET_PRODUCT_SUCCESS,
   PRODUCT_DETAIL_SUCCESS,
   PRODUCT_DETAIL_FAIL,
+  PRODUCT_UPDATE_SUCCESS,
+  PRODUCT_UPDATE_FAIL,
 
  
 } from "../const/productconst";
@@ -106,6 +108,40 @@ console.log(data);
  catch (error) {
      dispatch({
         type: PRODUCT_DETAIL_FAIL,
+        
+      });
+
+    }
+
+    }
+
+
+
+
+
+
+
+
+    export const updateProduct =(id,formData)=> async (dispatch) => {
+const config = {
+        headers: {
+           Authorization:localStorage.getItem("token"),
+          "Content-type": "application/json",
+        }
+      };
+try {
+  
+   const { data } = await axios.put(`/product/${id}`,formData, config);
+console.log(data);
+     dispatch({
+        type: PRODUCT_UPDATE_SUCCESS,
+        payload: data
+      });
+console.log(data);
+}
+ catch (error) {
+     dispatch({
+        type: PRODUCT_UPDATE_FAIL,
         
       });
 

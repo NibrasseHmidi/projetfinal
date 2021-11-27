@@ -96,22 +96,57 @@ const details = await productmodel.findById(req.params.id);
   }
 }
 
+//update 
+
+const UpdateProduct = async (req,res)=> {
+// const {name,numero,address,tarifJ,tarifS,tarifM,caution,message,ville,category} = req.body
+// const pic=req.file.filename
+ 
+// const update = await productmodel.findById(req.params.id);
+
+//  if (update) {
+//   update.name=name;
+//   update.numero=numero;
+//   update.address=address;
+//   update.tarifJ=tarifJ;
+//   update.tarifS=tarifS;
+//   update.tarifM=tarifM;
+//   update.caution=caution;
+//   update.message=message;
+//   update.ville=ville;
+//   update.category = category;
+
+//     const updatedProduct = await update.save();
+//     res.json(updatedProduct);
+//   } else {
+//     res.status(404);
+//     throw new Error("Product not found");
+//   }
+
+ try {
+      const update = await productmodel.findByIdAndUpdate(req.params.id, req.body);
+      res.status(200);
+      res.json(update);
+    } catch (error) {
+      res.status(500);
+      throw new Error('Update failed');
+    }
+
+}
+
+const DeleteProduct = async (req,res)=> {
+
+const deleteProduct = await productmodel.findById(req.params.id);
+  if (deleteProduct) {
+    await deleteProduct.remove();
+    res.json({ message: "Product Removed" });
+  } else {
+    res.status(404);
+    throw new Error("Note not Found");
+  }
+
+}
 
 
 
-
-// const GetDetailsProduct = async (req,res )=> {
-//  try {
-//       const details = await productmodel.findById(req.params.id);
-//       res.status(200);
-//       res.send(details);
-//     } catch (error) {
-//       res.status(500);
-//       throw new Error('No product found');
-//     }
-
-// }
-
-
-
-module.exports = {upload,ajoutProduct,getProductById ,GetAllProduct,GetDetailsProduct}
+module.exports = {upload,ajoutProduct,getProductById ,GetAllProduct,GetDetailsProduct,UpdateProduct,DeleteProduct}

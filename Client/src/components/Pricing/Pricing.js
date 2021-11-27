@@ -35,6 +35,7 @@ import { getProduct } from "../../JS/actions/annonceActions";
 
 function Pricing() {
   const dispatch = useDispatch();
+   let history = useHistory();
   //get user profile
 
   const userLogin = useSelector((state) => state.authReducer.user);
@@ -55,7 +56,7 @@ function Pricing() {
     return <h1> Loaading ......</h1>;
   }  
 
- 
+
  
   return (
  
@@ -95,9 +96,9 @@ function Pricing() {
             </LabelConv>
           </ProfileBanner>
           <PictureProfile>
-            <Editp>
-              Edit Profile <AiFillEdit />
-            </Editp>
+          <Link to="/updateprofil">
+            <Editp>Edit Profile <AiFillEdit /></Editp>
+            </Link>
             <Link to="/addproduct">
             <Addb>
               {" "}
@@ -166,7 +167,9 @@ function Pricing() {
                   <PricingImg src={`/${item.pic}`} />
                   <PricingCardFeatures>
                   </PricingCardFeatures>
-                  <Button>Get Started</Button>
+                 
+                  <Button onClick={() => { history.push(`/edit/${item._id}`) }}>Edit Product</Button>
+                 
                 </PricingCardInfo>
               </PricingCard>
             )})}

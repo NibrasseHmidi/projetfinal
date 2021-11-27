@@ -80,9 +80,46 @@ const getAuthUser = (req, res) => {
   res.send({ user: req.user });
 };
 
+
+
+const userUpDateProfil = async (req, res) => {
+
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.lastname = req.body.lastname || user.lastname;
+    user.email = req.body.email || user.email;
+    user.pic = req.body.pic || user.pic;
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+
+    const updatedUser = await user.save();
+      const payload = {
+      userID: user._id,
+    };
+const token = "Bearer " + jwt.sign(payload, process.env.SECRET, { expiresIn: "1h" });
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      lastname: updatedUser.lastname,
+      email: updatedUser.email,
+      password: updatedUser.password,
+      pic: updatedUser.pic,
+      token:  token,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User Not Found");
+  }
+}
+
+
 module.exports = {
   
   register,
   login,
   getAuthUser,
+  userUpDateProfil,
 };

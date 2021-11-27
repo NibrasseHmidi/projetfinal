@@ -23,7 +23,7 @@ export const PricingWrapper = styled.div`
 		align-items: center;
 	}
 `;
-
+export const ImgUser = styled.img``
 
 
 

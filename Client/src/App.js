@@ -17,6 +17,8 @@ import DetailsPage from './pages/DetailsPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuthUser } from './JS/actions/authActions';
 import MessangerPage from './pages/MessangerPage';
+import UpdateProfil from './components/UpdateProfil/UpdateProfil';
+import EditProductPage from './pages/EditProductPage';
 
 function App() {
 // const dispatch = useDispatch()
@@ -40,8 +42,10 @@ function App() {
 				<Route path="/contart" exact component={ContratPage} />
 				<Route path="/messanger" exact component={MessangerPage} />
 				<PrivateRoute path="/profil" component={Pricing}/>
+				<PrivateRoute path="/updateprofil" component={UpdateProfil}/>
 				<PrivateRoute path="/addproduct" exact component={AddProudact}/>
 				<PrivateRoute path="/details/:id" exact component={DetailsPage}/>
+				<PrivateRoute path="/edit/:id" exact component={EditProductPage}/>
 			</Switch>
 			<Footer />
 		</Router>

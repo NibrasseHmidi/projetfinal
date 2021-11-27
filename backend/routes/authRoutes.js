@@ -4,6 +4,7 @@ const {
   register,
   login,
   getAuthUser,
+  userUpDateProfil,
 } = require("../controllers/authcontrollers");
 const {
   registerRules,
@@ -32,5 +33,8 @@ authrouter.post("/login", loginRules(), validator, login);
  * @access PRIVATE
  */
 authrouter.get("/profil", isAuth(), getAuthUser);
+
+
+authrouter.post("/updateUser", isAuth(), userUpDateProfil);
 
 module.exports = authrouter;
