@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 import { detailsProduct } from '../../JS/actions/annonceActions';
 import { useParams } from 'react-router-dom';
+import {io} from "socket.io-client"
+
 const Messanger = () => {
    const { id } = useParams();
  const dispatch = useDispatch();
@@ -29,10 +31,16 @@ console.log(user);
  const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
+  const [newMessage, setNewMessage] = useState(null);
+   const [socket, setSocket] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
+ useEffect(() => {
+    setSocket(io("ws://localhost:6000"))
+  }, [])
+ 
   const scrollRef = useRef()
+
    useEffect(() => {
     const getConversations = async() => {
       try {
