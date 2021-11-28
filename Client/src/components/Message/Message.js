@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
 import { MessageBottom, MessageImg, MessageTop,  } from './MessageStyles';
-const Message = ({own}) => {
+import { format } from 'timeago.js';
+const Message = ({message,own}) => {
     const MessageWrapper = styled.div`
 display: flex;
 flex-direction: column;
@@ -25,10 +26,10 @@ max-width: 300px;
             <MessageTop>
             <MessageImg src="https://media-exp1.licdn.com/dms/image/C4D03AQEKoZVzmv4Y3g/profile-displayphoto-shrink_200_200/0/1613330015847?e=1639612800&v=beta&t=SpCtcYfvYEmBQ_xx2e-mZ9xWvuM9KYl1rvHYrwOsB4s" alt="" />
 
-            <MessageText>Hello this is a message</MessageText>
+            <MessageText>{message.text}</MessageText>
             
             </MessageTop>
-             <MessageBottom >1 hour ago</MessageBottom>
+             <MessageBottom >{format(message.createdAt)}</MessageBottom>
         </MessageWrapper>
     )
 }

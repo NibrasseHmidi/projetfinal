@@ -38,6 +38,7 @@ height:100% ;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+position: relative;
 
 `
 export const ChatOnlineWrapper = styled.div`
@@ -81,4 +82,13 @@ border-radius: 5px;
 cursor: pointer;
 background-color: orange;
 color: white;
+`
+
+export const SpanChat = styled.span`
+top: 10px;
+position: absolute;
+color: gray;
+font-size: 50px;
+/* text-align: center; */
+cursor: default;
 `

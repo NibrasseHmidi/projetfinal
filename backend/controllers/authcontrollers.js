@@ -114,7 +114,22 @@ const token = "Bearer " + jwt.sign(payload, process.env.SECRET, { expiresIn: "1h
     throw new Error("User Not Found");
   }
 }
+// //get user and product 
 
+// GetUserProduct= async (req, res) => {
+
+//  try {
+//       const user = await User.findById(req.user.id).populate('products');
+//       res.status(404);
+//       if (!user) throw new Error(`You don't have any profile yet`);
+//       res.status(201);
+//       res.send(user);
+//     } catch (error) {
+//       res.status(500);
+//       throw new Error('Server error');
+//     }
+
+// }
 
 module.exports = {
   
@@ -122,4 +137,5 @@ module.exports = {
   login,
   getAuthUser,
   userUpDateProfil,
+ 
 };

@@ -92,5 +92,12 @@ const productSchema = new Schema({
 {
     timestamps: true,
   });
-
+// //Popuplating this field of products to user s
+// productSchema.virtual('OneUser', {
+//   ref: 'User',
+//   foreignField: '_id',
+//   localField: 'product',
+//   justOne: true
+// });
+// productSchema.set('toJSON', { virtuals: true });
 module.exports = mongoose.model("Product", productSchema);

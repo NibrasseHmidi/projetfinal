@@ -12,14 +12,14 @@ import { useEffect } from 'react';
 import { detailsProduct } from '../../JS/actions/annonceActions';
 const Details = () => {
   const { id } = useParams();
-
-console.log(typeof(id));
+ const dispatch = useDispatch();
+// console.log(typeof(id));
 
  const ProductDetail = useSelector((state) => state.annonceReducer.product);
+// const ProductDetailUser = useSelector((state) => state.annonceReducer.product.user);
+// console.log(ProductDetailUser);
 
 
-
- const dispatch = useDispatch();
 
  
 
@@ -105,14 +105,17 @@ let history = useHistory();
         <p>{ProductDetail.message}</p>
         <div className="avatar"> 
          <ul>
-          <li>Name: <span>Nibrasse</span></li>
+          <li>Name: <span>{ProductDetail.user?.name + " " + ProductDetail.user?.lastname }</span></li>
           <li>Ville: <span>{ProductDetail.ville}</span></li>
           <li>Address: <span>{ProductDetail.address}</span></li>
           <li>Numéro: <span>{ProductDetail.numero}</span></li>
          
         </ul>
         
-        <img src={`/${ProductDetail.pic}`} alt="" /></div>
+        <img src={ProductDetail.user?.pic} alt="" />
+        
+        
+        </div>
      
        
       </div>

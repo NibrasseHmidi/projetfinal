@@ -1,23 +1,49 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { ConversationSection, ConversationWrapper,ConversationContent, ConversationImg, ConversationName } from './ConversationStyles';
+
+import React from 'react'
+
+
+
+import {ConversationContent, ConversationImg, ConversationName } from './ConversationStyles';
 const Conversation = ({conversation,currentUser}) => {
-
+//     const { id } = useParams();
+//  const dispatch = useDispatch();
     // const [user,setUser]=useState(null)
+console.log(currentUser);
+ console.log(conversation);
+  // const ProductDetail = useSelector((state) => state.annonceReducer.product);
 
-    // useEffect(() => {
-    //   const friendId = conversation.members.find(m=> m !==currentUser._id );
-    //   const getUser = async () =>{
-    //       const res = await axios 
-    //   }
-    // }, [])
+// useEffect(() => {
+//   const friendInd =conversation.members.find((m) => m !== currentUser?._id);
+
+// // const getUser = async () =>{
+// //   try {
+// //      const res = await axios("/product?user._id="+friendInd)
+// //      console.log(res);
+// //   } catch (error) {
+// //     console.log(error);
+// //   }
+        
+// //       }
+// //       getUser()
+
+//   }, [currentUser, conversation]);
+
+  
+  
+
+ 
+
+  // useEffect(() => {
+  //   dispatch(detailsProduct(id));
+  // }, [dispatch, id]);
+
     return (
       
  <ConversationContent>
 
-<ConversationImg src="https://media-exp1.licdn.com/dms/image/C4D03AQEKoZVzmv4Y3g/profile-displayphoto-shrink_200_200/0/1613330015847?e=1639612800&v=beta&t=SpCtcYfvYEmBQ_xx2e-mZ9xWvuM9KYl1rvHYrwOsB4s" alt="" />
+<ConversationImg src={currentUser.pic}  alt="" />
 
-<ConversationName> nibrasse hmidi</ConversationName>
+<ConversationName> {currentUser.name + " " + currentUser.lastname }</ConversationName>
 
 </ConversationContent>
      

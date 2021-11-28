@@ -88,7 +88,7 @@ const allProduct = await productmodel.find();
 
 //get details of one product
 const GetDetailsProduct = async (req,res)=> {
-const details = await productmodel.findById(req.params.id);
+const details = await productmodel.findById(req.params.id).populate({path:"user",select:"name lastname pic"})
   if (details) {
    return res.json(details);
   } else {

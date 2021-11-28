@@ -5,6 +5,7 @@ const {
   login,
   getAuthUser,
   userUpDateProfil,
+  
 } = require("../controllers/authcontrollers");
 const {
   registerRules,
@@ -36,5 +37,6 @@ authrouter.get("/profil", isAuth(), getAuthUser);
 
 
 authrouter.post("/updateUser", isAuth(), userUpDateProfil);
+// authrouter.get("/userandproduct", isAuth(), GetUserProduct);
 
 module.exports = authrouter;
