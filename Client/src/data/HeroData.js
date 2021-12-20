@@ -38,6 +38,7 @@ export const heroThree = {
 	description:
 		'Our 9 year experience have allowed us to use the most innovative technologies and methodologies',
 	buttonLabel: 'View Project',
+	video:"./assets/video-2.mp4",
 
 	linkTo: '/download',
 	imgStart: '',

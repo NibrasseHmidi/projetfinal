@@ -10,6 +10,7 @@ import {
 	ImgWrapper,
 	Img,
 	ContentColumn,
+	Video,
 } from './ContentStyles.js';
 
 import { useInView } from 'react-intersection-observer';
@@ -20,6 +21,7 @@ export const Content = ({
 	topLine,
 	headline,
 	description,
+	video,
 	buttonLabel,
 	img,
 	alt,
@@ -46,13 +48,7 @@ export const Content = ({
 				<ContentRow reverse={reverse}>
 					<ContentColumn>
 						<TextWrapper>
-							<TopLine
-								initial={initial}
-								transition={{ delay: 0.3, duration: 0.6 }}
-								animate={animation}
-							>
-								{topLine.text}
-							</TopLine>
+						
 							<Heading
 								initial={initial}
 								transition={{ delay: 0.5, duration: 0.6 }}
@@ -61,23 +57,8 @@ export const Content = ({
 							>
 								{headline}
 							</Heading>
-							<Subtitle
-								initial={initial}
-								transition={{ delay: 0.7, duration: 0.6 }}
-								animate={animation}
-								inverse={inverse}
-							>
-								{description}
-							</Subtitle>
-							<ContentButton
-								initial={initial}
-								transition={{ delay: 1, duration: 0.6 }}
-								animate={animation}
-								inverse={inverse}
-								primary={primary}
-							>
-								{buttonLabel}
-							</ContentButton>
+							<Video src={video} autoPlay muted loop />
+						
 						</TextWrapper>
 					</ContentColumn>
 					<ContentColumn

@@ -10,7 +10,7 @@ const Hero = () => {
 	let history = useHistory();
 	return (
 		<HeroSection>
-			<HeroVideo src="./assets/d.mp4" autoPlay muted loop />
+			<HeroVideo src="./assets/nib.mp4" autoPlay muted loop />
 			<Container>
 				<MainHeading>1 ere site web de location</MainHeading>
 				<HeroText>

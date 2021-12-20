@@ -14,6 +14,9 @@ export const ContentRow = styled.div`
 	}
 `;
 
+export const Video=styled.video`
+width:600px
+`
 export const ContentColumn = styled(motion.div)`
 	margin-bottom: 15px;
 	padding-right: 15px;

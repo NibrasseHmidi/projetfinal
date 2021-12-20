@@ -24,7 +24,7 @@ import { useDispatch } from "react-redux";
 import {  useHistory } from "react-router-dom";
 
 const Add = () => {
-   const history = useHistory();
+const history = useHistory();
 const [name, setName] = useState('')
 const [numero, setNumero] = useState('')
 const [address, setAddress] = useState('')
