@@ -74,7 +74,7 @@ const isAuth = useSelector((state) => state.authReducer.isAuth);
 				<NavbarContainer>
 					<NavLogo to="/">
 						<NavIcon src="./assets/logo.png" alt="logo" />
-						Location
+				Dipanini
 
 					</NavLogo>
 			
